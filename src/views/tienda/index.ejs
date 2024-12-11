@@ -1,0 +1,32 @@
+<%- include('../layouts/header', {title: 'Lista de productos en la tienda'}); -%>
+
+<div class="container">
+   
+
+    <% for (const categoria in productosPorCategoria) { %>
+        <h2 class="mt-4"><%= categoria %></h2>
+        <div class="row">
+            <% productosPorCategoria[categoria].forEach(producto => { %>
+                <div class="col-sm-3 mb-3"  >
+                    <div class="card">
+                        <img src="<%= producto.imagen %>" alt="<%= producto.nombre %>" class="card-img-top img-fluid"  >
+                        <div class="card-body">
+                            <h5 class="card-title"><%= producto.nombre %></h5>
+                            <p class="card-text"><%= producto.descripcion %></p>
+                            <p class="card-text"><strong>Marca:</strong> <%= producto.marca %></p>
+                            <p class="card-text"><strong>Precio:</strong> <%= producto.precio %></p>
+                            <form action="/tienda/guardar/<%= producto.id %>" method="post">
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="bi bi-cart-check-fill"></i> Agregar al carrito
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+    
+</div>
+
+<%- include('../layouts/footer'); -%>

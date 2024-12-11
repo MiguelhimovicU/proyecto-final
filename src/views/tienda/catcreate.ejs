@@ -1,0 +1,33 @@
+<%- include('../layouts/header', {title: 'Create a new Categoria'}); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="alert alert-success text-center">Create a new Categoria</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form action="/admincategorias" method="post"  class="row">
+                <div class="col-6">
+                    <label for="nombre_categoria" class="form-label">Nombre</label>
+                    <input type="text" name="nombre_categoria" id="nombre_categoria" class="form-control" required>
+                </div>
+                <div class="col-12 d-grid mt-4">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-grid mt-4">
+            <a href="/tienda" class="btn btn-outline-secondary">
+                Back to Store
+            </a>
+        </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer'); -%>
+
+

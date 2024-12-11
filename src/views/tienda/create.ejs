@@ -1,0 +1,71 @@
+<%- include('../layouts/header', {title: 'Create a new Product'}); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="alert alert-success text-center">Create a new Product</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form action="/adminproducts" method="post" enctype="multipart/form-data" class="row">
+                <div class="col-6">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" required>
+                </div>
+                <div class="col-6">
+                    <label for="marca" class="form-label">Marca</label>
+                    <input type="text" name="marca" id="marca" class="form-control" required>
+                </div>
+                <div class="col-6">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" name="precio" id="precio" class="form-control" required>
+                </div>
+                <div class="col-6">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="col-6">
+                    <label for="imagen" class="form-label">Imagen</label>
+                    <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*" required>
+                </div>
+                <div class="col-6">
+                    <label for="id_categoria" class="form-label">ID Categoría</label>
+                    <select name="id_categoria" id="id_categoria" class="form-select" required>
+                        <!-- Opción por defecto -->
+                        <option value="" disabled selected>Selecciona una categoría</option>
+                    </select>
+                </div>
+                <div class="col-12 d-grid mt-4">
+                    <button type="submit" class="btn btn-outline-success">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-grid mt-4">
+            <a href="/tienda" class="btn btn-outline-secondary">
+                Back to Store
+            </a>
+        </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer'); -%>
+
+<script>
+    // Cargar dinámicamente las opciones del select desde la ruta del servidor
+    fetch('/adminproducts/categorias')
+        .then(response => response.json())
+        .then(categorias => {
+            const select = document.getElementById('id_categoria');
+            
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.id_categoria;  // Usa id_categoria en lugar de id
+                option.text = categoria.nombre_categoria;  // Usa nombre_categoria en lugar de nombre
+                select.add(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar categorías:', error));
+</script>

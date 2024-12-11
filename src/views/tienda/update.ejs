@@ -1,0 +1,58 @@
+<%- include('../layouts/header', {title: 'Actualizar Productos'}); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Actualizar Película</h1>
+        </div>
+        <div class="col-12">
+            <form action="/adminproducts/update/ <%= tienda.id %>" method="post">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" value="<%= tienda.nombre %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="marca" class="form-label">Marca</label>
+                    <input type="text" name="marca" id="marca" class="form-control" value="<%= tienda.marca %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" name="precio" id="precio" class="form-control" value="<%= tienda.precio %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" class="form-control" rows="3" required><%= tienda.descripcion %></textarea>
+                </div>                
+                <div class="col-6">
+                    <label for="id_categoria" class="form-label">ID Categoría</label>
+                    <select name="id_categoria" id="id_categoria" class="form-select" required>
+                        <!-- Opción por defecto -->
+                        <option value="" disabled selected>Selecciona una categoría</option>
+                    </select>
+                </div>
+                <div class="col-12 d-grid mt-4">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer'); -%>
+
+<script>
+    // Cargar dinámicamente las opciones del select desde la ruta del servidor
+    fetch('/adminproducts/categorias')
+        .then(response => response.json())
+        .then(categorias => {
+            const select = document.getElementById('id_categoria');
+            
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.id_categoria;  // Usa id_categoria en lugar de id
+                option.text = categoria.nombre_categoria;  // Usa nombre_categoria en lugar de nombre
+                select.add(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar categorías:', error));
+</script>

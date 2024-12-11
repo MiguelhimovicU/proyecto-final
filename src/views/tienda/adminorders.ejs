@@ -1,0 +1,53 @@
+<%- include('../layouts/header', { title: 'Detalles del Carrito' }); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Detalles del Carrito</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2>Información del Carrito</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID Carrito</th>
+                        <th>Nombre Cliente</th>
+                        <th>Apellido Cliente</th>
+                        <th>Fecha de Compra</th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    <% carrito.forEach(producto => { %>
+                        <tr>
+                        <td scope="row"> <strong> <%= producto.id_carrito %></strong> </td>
+                        <td><strong><%= producto.nombre_cliente %></strong></td>
+                        <td> <strong><%= producto.apellido_cliente %> </strong></td>
+                        <td><strong><%= producto.fecha_compra %> </strong></td>
+                        <td>
+                            <tr>
+                                <th>ID Producto</th>
+                                <th>Nombre Producto</th>
+                                <th>Precio Producto</th>
+                                
+                            </tr>
+                            <tr>
+                                <% producto.productos.forEach(producto => { %>
+                                    <td scope="row"><%= producto.id %></td>
+                                    <td><%= producto.nombre %></td>
+                                    <td><%= producto.precio %></td>
+                                    
+                            </tr>
+                            <% }) %>
+                        </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+<%- include('../layouts/footer'); -%>

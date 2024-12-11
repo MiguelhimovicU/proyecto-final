@@ -1,0 +1,65 @@
+<%- include('../layouts/header', { title: 'Carrito de Compras' }); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="alert alert-success text-center">Products list</h1>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Id categoria</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% tienda.map( tien => { %>
+                        <tr>
+                            <th scope="row"><%= tien.id %></th>
+                            <td><%= tien.nombre %></td>
+                            <td><%= tien.marca %></td>
+                            <td><%= tien.precio %></td>
+                            <td><%= tien.descripcion %></td>
+                            <td><%= tien.imagen %></td>
+                            <td><%= tien.id_categoria %></td>                            
+                            <td>
+                                <form 
+                                action="/adminproducts/delete/<%= tien.id %>" 
+                                method="post"
+                                onsubmit="return confirm('Are you sure you want to delete this product?');"
+                                >
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="/adminproducts/update/<%= tien.id %>" class="btn btn-outline-primary">Update</a>
+                                
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-grid">
+            <a href="/adminproducts/create" class="btn btn-outline-secondary">
+                Crear Nuevo Producto
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<%- include('../layouts/footer'); -%>

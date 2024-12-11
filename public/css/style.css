@@ -1,0 +1,111 @@
+/* Estilo general */
+body {
+    font-family: 'Arial Black', sans-serif; /* Tipografía deportiva */
+    background: linear-gradient(to bottom right, #e19d96, #87ddd0); /* Degradé suave entre rosa y azul */
+    color: #3b302b; /* Café oscuro para el texto principal */
+}
+
+h1 {
+    color: #fff;
+    background-color: #7e5e87; /* Morado oscuro */
+    padding: 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #7e5e87; /* Morado oscuro para las bordes */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background-color: #7e5e87; /* Morado oscuro para el encabezado */
+    color: white;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.table-bordered {
+    border: 2px solid #7e5e87; /* Morado oscuro para los bordes */
+}
+
+/* Botones */
+.btn {
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.btn-outline-danger {
+    background-color: #3b302b; /* Café oscuro */
+    color: white;
+    border: 2px solid #3b302b; /* Café oscuro */
+}
+
+.btn-outline-danger:hover {
+    background-color: #80564f; /* Café claro */
+    border-color: #80564f; /* Café claro */
+}
+
+.btn-outline-primary {
+    background-color: #7e5e87; /* Morado oscuro */
+    color: white;
+    border: 2px solid #7e5e87; /* Morado oscuro */
+}
+
+.btn-outline-primary:hover {
+    background-color: #80564f; /* Café claro */
+    border-color: #80564f; /* Café claro */
+}
+
+.btn-outline-secondary {
+    background-color: #87ddd0; /* Azul agua marina */
+    color: white;
+    border: 2px solid #87ddd0; /* Azul agua marina */
+}
+
+.btn-outline-secondary:hover {
+    background-color: #7e5e87; /* Morado oscuro */
+    border-color: #7e5e87; /* Morado oscuro */
+}
+
+/* Formulario de creación */
+.d-grid {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Estilo para enlaces */
+a {
+    color: #7e5e87; /* Morado oscuro */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3b302b; /* Café oscuro al pasar el ratón */
+    text-decoration: underline;
+}
+
+/* Banner */
+#banner img {
+    width: 90%;
+    border-radius: 10px;
+    margin-top: 20px;
+}

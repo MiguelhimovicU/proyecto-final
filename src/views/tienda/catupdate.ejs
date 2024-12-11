@@ -1,0 +1,23 @@
+<%- include('../layouts/header', {title: 'Actualizar Categoria'}); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Actualizar Película</h1>
+        </div>
+        <div class="col-12">
+            <form action="/admincategorias/update/ <%= categoria.id_categoria %>" method="post">
+                <div class="mb-3">
+                    <label for="nombre_categoria" class="form-label">Nombre</label>
+                    <input type="text" name="nombre_categoria" id="nombre_categoria" class="form-control" value="<%= categoria.nombre_categoria %>" required>
+                </div>                
+                <div class="col-12 d-grid mt-4">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../layouts/footer'); -%>
+
